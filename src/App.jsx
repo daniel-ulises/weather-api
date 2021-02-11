@@ -12,10 +12,7 @@ function App() {
 		if(navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(onSuccess)
 		}
-		if(!navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(onFail)
-		}
-
+		
 		function onSuccess(position) {
 			const {
 				latitude,
@@ -28,12 +25,7 @@ function App() {
 		   .then(data => setForecast(data))		
 		}
 
-		function onFail() {
-			fetch(`https://api.openweathermap.org/data/2.5/forecast?q=berlin&APPID=95497c16aeb66383ce86bd521556a5b5&units=metric`)
-			.then(res => res.json())
-			.then(data => setForecast(data))
-		}
-
+		
 	}, [])
 
 
@@ -49,14 +41,6 @@ function App() {
 		fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&APPID=95497c16aeb66383ce86bd521556a5b5&units=metric`)
 		.then(res => res.json())
 		.then(data => setForecast(data))
-
-		if(!forecast.list) {
-			document.querySelector(".container").innerHTML = `
-			<div class="info loading">
-				<h3>Location does not exist, try a different one!</h3>
-			</div>
-			`
-		}
 
 		document.querySelector("input").value = ""
 	}
@@ -79,6 +63,12 @@ function App() {
 		<>
 			<Header submit={foreCast} getValue={searchValue}/>
 			{forecast.list ? <Display city={forecast} currentDay={getDay}/> 
+							: forecast.cod == 404 ? 
+							<div className="container">
+								<div class="info loading">
+									<h3>Location does not exist, try a different one!</h3>
+								</div>
+							</div>
 							: <div className="container">
 								<div className="loading">
 									<h2>Getting your location...</h2>
