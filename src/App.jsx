@@ -6,7 +6,7 @@ import "./App.css"
 function App() {
 	const [location, setLocation] = useState()
 	const [forecast, setForecast] = useState([])
-	const [day, setDay] = useState()
+	const [cards, setCards] = useState()
 
 	useEffect(() => {
 		if(navigator.geolocation) {
@@ -23,7 +23,8 @@ function App() {
 		   fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&APPID=95497c16aeb66383ce86bd521556a5b5&units=metric`)
 		   .then(res => res.json())
 		   .then(data => setForecast(data))		
-		}		
+		}
+		
 	}, [])
 
 	const searchValue = e => {
@@ -57,7 +58,7 @@ function App() {
 	return (
 		<>
 			<Header submit={foreCast} getValue={searchValue}/>
-			{forecast.list ? <Display city={forecast} currentDay={getDay}/> 
+			{forecast.list ? <Display city={forecast} currentDay={getDay} setCards={setCards}/> 
 							: forecast.cod == 404 ? 
 							<div className="container">
 								<div class="info loading">
