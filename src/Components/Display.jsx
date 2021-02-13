@@ -1,7 +1,8 @@
 import React from 'react'
 
 function Display(props) {
-
+	const imgUrl = `https://openweathermap.org/img/wn/${props.city.list[0].weather[0].icon}@2x.png`
+	
 	return (
 		<div className="container">
 			<div className="info">
@@ -20,6 +21,7 @@ function Display(props) {
 						</div>	
 					</div>
 					<div className="extra-info">
+							<img src={imgUrl}></img>
 							<span>{props.city.list[0].weather[0].description}</span>
 							<span>Feels like: {props.city.list[0].main.feels_like}°</span>
 							<span>Humidity: {props.city.list[0].main.humidity}%</span>
