@@ -20,7 +20,7 @@ function App() {
 			} = position.coords;
 	
 
-		   fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&APPID=95497c16aeb66383ce86bd521556a5b5&units=metric`)
+		   fetch(${{ secrets.API_TOKEN_GEOLOCATION }})
 		   .then(res => res.json())
 		   .then(data => setForecast(data))		
 		}
@@ -34,7 +34,7 @@ function App() {
 	const foreCast = e => {
 		e.preventDefault() 
 
-		fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&APPID=95497c16aeb66383ce86bd521556a5b5&units=metric`)
+		fetch(${{ secrets.API_TOKEN_LOCATION }})
 		.then(res => res.json())
 		.then(data => setForecast(data))
 
