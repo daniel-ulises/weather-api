@@ -14,4 +14,4 @@ Once you have installed them, you will have to add your own API key which you ca
 
 # Live demo
 
-The project is hosted on [Heroku](https://dci-weatherapp.herokuapp.com/). 
+You can see it live [here](https://daniel-ulises.github.io/weather-app). 
