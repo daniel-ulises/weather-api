@@ -10,7 +10,7 @@ export default function Search(props) {
 		setMessage("Loading...");
 		try {
 			fetch(
-				`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
+				`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
 			)
 				.then(res => res.json())
 				.then(res => {
@@ -38,7 +38,7 @@ export default function Search(props) {
 
 			try {
 				fetch(
-					`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
+					`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
 				)
 					.then(res => res.json())
 					.then(res => {

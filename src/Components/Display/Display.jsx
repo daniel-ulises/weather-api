@@ -13,7 +13,7 @@ export default function Display(props) {
 					<span className="wcondition">{weather.weather[0].description}</span>
 					<span>
 						<img
-							src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+							src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
 							alt="weather icon"
 							className="weather-icon"
 						/>
